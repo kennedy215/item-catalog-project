@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{{person}}
+{{country}}
+
+{% block container %}
+    <div class="row">
+      <div class="column">
+        <div class="countries">
+          <h1>{{ country.name }}</h1>
+        </div>
+      </div>
+      <div class="column">
+        <div class ="fighters">
+            <ul id="person">
+              {% for fighter in person %}
+              <li><a href="/fighter/{{ fighter.id }}">{{ fighter.name }} : {{ fighter.style }} </a></li>
+              {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+{% endblock %}

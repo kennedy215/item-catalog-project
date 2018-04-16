@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block h1 %} THIS IS Edit {% endblock %}
+
+
+{% block container %}
+   <div class="row">
+      <div class="column">
+        <div class="countries">
+          <ul id="countries">
+            {% for location in place %}
+              <li><a href="/countries/edit/{{ location.id }}/">{{ location.name }}</a></li>
+              <ul id="{{location.name}}">
+              {% for fighter in person %}
+                {%if fighter.country_id == location.id %}
+                  <li><a href="/fighter/edit/{{ fighter.id }}/">{{ fighter.name }}</a></li>
+                {% endif %}
+              {% endfor %}
+              </ul>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{{person}}
+{{place}}
+
+{% block container %}
+    <div class="row">
+      <div class="column">
+        <div class="countries">
+          <ul id="countries">
+            {% for location in place %}
+              <li><a href="/countries/{{ location.id }}">{{ location.name }}</a></li>
+              <ol>
+              {% for fighter in person %}
+                {%if fighter.country_id == location.id %}
+                <li><a href="/fighter/{{ fighter.id }}">{{ fighter.name }}</a></li>
+                {% endif %}
+              {% endfor %}
+              </ol>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+          

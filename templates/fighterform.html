@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{{fighter}}
+
+{% block container %}
+<form action="/fighter/edit/{{fighter.id}}/" method="POST" >
+  Name:<br>
+  <input type="text" name="name" value={{fighter.name}}><br>
+  Style:<br>
+  <input type="text" name="style" value={{fighter.style}}><br>
+  Description:<br>
+  <input type="textarea" name="description" value={{fighter.description}}></br>
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}
