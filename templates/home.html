@@ -13,6 +13,10 @@
               {% for fighter in person %}
                 {%if fighter.country_id == location.id %}
                 <li><a href="/fighter/{{ fighter.id }}">{{ fighter.name }}</a></li>
+                <form method="POST" action="/fighter/{{ fighter.id }}">
+                <input type="hidden" value="{{fighter.name}}" name="name">
+                <input type="submit" value="Delete">
+                </form>
                 {% endif %}
               {% endfor %}
               </ol>

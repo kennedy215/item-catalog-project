@@ -43,9 +43,9 @@ def showCountryFighters(c_id):
     # everything gets loaded into the id. fighter passes it in there
     return render_template('country.html', person = person, country = country)
 
-@app.route('/fighters/new')
+@app.route('/fighters/new/<int:c_id>/')
 def newFighters():
-    #newPerson = session.query(Fighter).filter_by(id=fighter_id).one()
+    # newPerson = session.query(Fighter).filter_by(c_id)
     # Create new button
     # NewHtml and form
     # Create flash
@@ -95,18 +95,18 @@ def editFighter(f_id):
  
 
 
-@app.route('/fighter/delete/', methods=['GET'])
-def deleteFighters():
-    # person = session.query(Fighter).get(f_id)
+@app.route('/fighter/delete/<int:f_id>/', methods=['GET','POST'])
+def deleteFighters(f_id):
+  fighterToDelete = session.query(Fighter).get(f_id)
+  if request.method == 'POST':
+        session.delete(fighterToDelete)
+        session.commit()
+        return url_for('showFighters', person=fighterToDelete, fighter = f_id)
+  else:
+        return 'delete'
+        
     
-    # session.delete(person)
-    # session.commit()
     
-    # print "delete!"
-    # url = '/fighter/'+ str(f_id) + '/'
-    
-    return 'delete'
-
 @app.route('/login/')
 def loginFighters():
     return render_template('login.html')

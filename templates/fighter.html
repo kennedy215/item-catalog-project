@@ -6,9 +6,11 @@
 {% block container %}
     <div class="row">
       <div class ="fighters">
-       <h1>{{ fighter.name }} </h1> : <a href="/countries/{{ fighter.country_id }}/ "> {{ fighter.country.name }}</a><br>
-       {{ fighter.style }} <br>
-       {{ fighter.description }}
+       <h1>{{ fighter.name }}</h1> 
+       <br>
+       <p>Country: <a href="/countries/{{ fighter.country_id }}/ ">{{ fighter.country.name }}</p></a>
+       <p>Fighting Style: {{ fighter.style }} </p>
+       <p>Description: {{ fighter.description }} </p>
       </div>
     </div>
 {% endblock %}

@@ -1,20 +1,20 @@
 {% extends "base.html" %}
-{% block h1 %} THIS IS Delete {% endblock %}
+{{fighter}}
+
+{% block container %}
 
 
-{% block nav %}
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" href={{ url_for('showFighters') }}>Show</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href={{ url_for('editFighters')}}>Edit</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href={{ url_for('deleteFighters')}}>Delete</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href={{ url_for('loginFighters')}}>Login</a>
-    </li>
-  </ul>
+<h1> Are you sure you want to delete {{fighter.name}}? </h1>
+
+<form action="{{ url_for('deleteMenuItem', f_id=f_id) }}" method = 'post'>
+<input type="submit" value="Delete">
+
+
+
+
 {% endblock %}
+
+
+
+
+
