@@ -44,12 +44,12 @@ def showCountryFighters(c_id):
     return render_template('country.html', person = person, country = country)
 
 @app.route('/fighters/new/<int:c_id>/')
-def newFighters():
+def newFighters(c_id):
     # newPerson = session.query(Fighter).filter_by(c_id)
     # Create new button
     # NewHtml and form
     # Create flash
-    return  render_template('new.html')
+    return  "Add route functionng"
 
 @app.route('/edit/')
 def editFighters():
@@ -97,13 +97,16 @@ def editFighter(f_id):
 
 @app.route('/fighter/delete/<int:f_id>/', methods=['GET','POST'])
 def deleteFighters(f_id):
-  fighterToDelete = session.query(Fighter).get(f_id)
-  if request.method == 'POST':
-        session.delete(fighterToDelete)
+    person = session.query(Fighter).get(f_id)
+    if request.method == 'POST':
+        session.delete(person)
         session.commit()
-        return url_for('showFighters', person=fighterToDelete, fighter = f_id)
-  else:
-        return 'delete'
+        
+        print "it's posted"
+        url = '/fighter/'+ str(f_id) + '/'
+        return redirect(url)
+    
+    
         
     
     
