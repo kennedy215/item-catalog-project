@@ -10,8 +10,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 Base = declarative_base()
 # reference sqlalchemy create engine
 
-class Country(Base):
-    __tablename__ = 'country'
+class Gym(Base):
+    __tablename__ = 'gym'
 
     id = Column(Integer,primary_key=True)
     name = Column(String(150),nullable=False)
@@ -30,8 +30,9 @@ class Fighter(Base):
     name = Column(String(150),nullable=False)
     description = Column(String(1000))
     style = Column(String(300))
-    country_id = Column(Integer, ForeignKey('country.id'))
-    country = relationship(Country)
+    country = Column(String(100)) 
+    gym_id = Column(Integer, ForeignKey('gym.id'))
+    gym = relationship(Gym)
 
     @property
     def serialize(self):
@@ -40,6 +41,7 @@ class Fighter(Base):
             'name': self.name,
             'description': self.description,
             'style': self.style,
+            'country': self.country,
         }
 
 engine = create_engine('sqlite:///tournament.db')

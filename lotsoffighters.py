@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Base, Country, Fighter
+from database_setup import Base, Gym, Fighter
 
 
 
@@ -12,63 +12,50 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-country1 = Country(name="China")
-session.add(country1)
+gym1 = Gym(name="UFC")
+session.add(gym1)
 session.commit()
 
 
-fighter1 = Fighter(name="Bruce Lee", description="Trained with the legendary IP man speed and incredible power", style="jeet kundo & wing chun", country=country1)
+fighter1 = Fighter(name="Greg", description="Has almost inhuman strength", style="mixed martial arts", country="USA", gym=gym1)
 
 session.add(fighter1)
 session.commit()
 
-fighter2 = Fighter(name="Jack Chan", description="Trained with Bruce Lee, all around versatile fighter with multiple styles", style="drunken style, snake, crane, tiger", country=country1)
+fighter2 = Fighter(name="Jin", description="Strict form and power", style="karate", country="Japan", gym=gym1)
 
 session.add(fighter2)
 session.commit()
 
-fighter3 = Fighter(name="Bolo Yeung", description="Trained with Bruce Lee, known for his strength and brutal style", style="Kung Fu", country=country1)
+fighter3 = Fighter(name="Ru", description="Speed, fluidity and agility", style="Coepeira", country="Brazil", gym=gym1)
 
 session.add(fighter3)
 session.commit()
 
-country2 = Country(name="Russia")
-session.add(country2)
+gym2 = Gym(name="Muay Thai Gym")
+session.add(gym2)
 session.commit()
 
-fighter1 = Fighter(name="Yuri Borka", description="MMA combination of many different styles known as a complete fighter", style="MMA, Muay Thai, Brazilian Jitsu", country=country2)
+fighter1 = Fighter(name="Yuri Borka", description="the most complete fighter ", style="MMA, Muay Thai, Brazilian Jitsu", country="Russia", gym=gym2)
 
 session.add(fighter1)
 session.commit()
 
-country3 = Country(name="United States")
-session.add(country3)
+gym3 = Gym(name="Rocky's Boxing Gym")
+session.add(gym3)
 session.commit()
 
-fighter1 = Fighter(name="Muhammed Ali", description="Boxing, known for speed, grace and power", style="western boxing", country=country2)
+fighter1 = Fighter(name="Muhammed Ali", description="combination of speed, agility and power", style="western boxing", country="USA", gym=gym3)
 
 session.add(fighter1)
 session.commit()
 
-fighter2 = Fighter(name="Andre the Giant", description="Wrestler known for his incredible strength and size", style="Wrestler", country=country2)
+fighter2 = Fighter(name="Sugar Ray", description="speed and deadily combinations", style="Western Boxing", country="USA", gym=gym3)
 
 session.add(fighter2)
 session.commit()
 
-country4 = Country(name="Thailand")
 
-session.add(country4)
-session.commit()
-
-fighter1 = Fighter(name="Saenchi", description="Speed, Witts along with tricky power blows with shins", style="Muay Thai", country=country4)
-
-session.add(fighter1)
-session.commit()
-
-fighter2 = Fighter(name="Bukaow", description="Strength, direct power and relentless attacks", style="Muay Thai", country=country4)
-
-session.add(fighter2)
-session.commit()
 
 print "loaded fighters DB! "
 
